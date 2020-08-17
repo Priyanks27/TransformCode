@@ -2,7 +2,7 @@ import os
 from shutil import copyfile
 
 
-class UpdateProjectFiles:
+class RuleUpdateGoogleProject:
 
     def __init__(self, project_templates_location="", project_base_location="", application="", service=""):
         self.__project_templates_location = project_templates_location
@@ -87,7 +87,7 @@ class UpdateProjectFiles:
 
 
 if __name__ == "__main__":
-    transform = UpdateProjectFiles("C:/Users/priyank/Documents/DissertationWorkspace/ProjectFiles",
+    transform = RuleUpdateGoogleProject("C:/Users/priyank/Documents/DissertationWorkspace/ProjectFiles",
                                "C:/Users/priyank/Documents/DissertationWorkspace/InventoryServiceGCPTemplate",
                                "multicloud",
                                "inventory-service")

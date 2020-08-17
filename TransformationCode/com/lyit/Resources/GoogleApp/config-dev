@@ -1,0 +1,8 @@
+[core]
+account = infinity-285116@appspot.gserviceaccount.com
+project = infinity-285116
+
+[compute]
+zone = europe-west4-a
+region = europe-west4
+
