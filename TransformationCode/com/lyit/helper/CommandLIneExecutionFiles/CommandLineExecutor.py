@@ -1,5 +1,6 @@
 import os
 import subprocess
+import threading
 
 from com.lyit.configuration.GetProperties import GetProperties
 from com.lyit.helper.CommandLIneExecutionFiles.CommandLineChangeDirectory import CommandLineChangeDirectory
@@ -22,7 +23,10 @@ class CommandLineExecutor(metaclass=CommandLineExecutorMeta):
 
         if commandSequence is "FetchGitHub":
             commandLineFetchGitHub = CommandLineFetchGitHub()
-            commandLineFetchGitHub.execute_fetch_github_url(payload)
+            thread = threading.Thread(target=commandLineFetchGitHub.execute_fetch_github_url, args=[payload])
+            thread.start()
+            thread.join()
+            #commandLineFetchGitHub.execute_fetch_github_url(payload)
 
         if commandSequence is "gitpush":
             commandLineGitPush = CommandLineGitPush()

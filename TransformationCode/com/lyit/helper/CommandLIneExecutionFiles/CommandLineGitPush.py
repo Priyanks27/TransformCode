@@ -33,8 +33,8 @@ class CommandLineGitPush(metaclass=CommandLineGitPushMeta):
             for command in commands:
                 command = command.strip()
                 if command.find("<%message%>") != -1:
-                    command = command.replace("<%message%>", "\"Automated check in at\"" +
-                                              str(int(time.time())))
+                    command = command.replace("<%message%>", "\"Automated check in at " +
+                                              str(int(time.time())) + "\"")
                 return_code = runCommandLine.run_command_line(command, "run")
                 if return_code != 0:
                     raise subprocess.CalledProcessError

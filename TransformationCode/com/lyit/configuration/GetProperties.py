@@ -35,8 +35,60 @@ class GetProperties(metaclass=GetPropertiesMeta):
                 commands.append(line)
         return commands
 
-#if __name__ == "__main__":
-#    getProperties = GetProperties()
-#    commands = getProperties.get_gitCloneCommands()
-#    for command in commands:
-#        print(command)
+
+    def get_supported_environment_source_dependencies(self):
+        print(os.getcwd())
+        commands = []
+        supported_environment_ini_file = '../RuleEngine/SupportedEnvironmentSource.ini'
+        with open(supported_environment_ini_file) as file:
+            for line in file.readlines():
+                commands.append(line)
+        return commands
+
+    def get_supported_environment_target_google_dependencies(self):
+        print(os.getcwd())
+        commands = []
+        supported_environment_ini_file = '../RuleEngine/SupportedEnvironmentTargetGoogle.ini'
+        with open(supported_environment_ini_file) as file:
+            for line in file.readlines():
+                commands.append(line)
+        return commands
+
+    def get_transform_unsupported_dependency(self, unsupported_dependency):
+        transform_unsupported_dependency__ini_file = '../RuleEngine/TransformUnSupportedDependency.ini'
+        with open(transform_unsupported_dependency__ini_file) as file:
+            for line in file.readlines():
+                if unsupported_dependency.find(line) != -1:
+                    return True
+        return False
+
+    def get_lines_to_be_removed_from_model(self):
+        lines_to_be_removed_from_model_ini_file = '../RuleEngine/RemoveLinesFromModel.ini'
+        lines = []
+        with open(lines_to_be_removed_from_model_ini_file) as file:
+            for line in file.readlines():
+                lines.append(line)
+            return lines
+
+    def get_lines_to_be_added_to_model(self):
+        lines_to_be_added_to_model_ini_file = '../RuleEngine/AddLinesToModel.ini'
+        lines = []
+        with open(lines_to_be_added_to_model_ini_file) as file:
+            for line in file.readlines():
+                lines.append(line)
+        return lines
+
+    def get_update_imports_statement_repository(self):
+        lines_to_be_added_to_model_ini_file = '../RuleEngine/UpdateImportStatementInRepository.ini'
+        lines = []
+        with open(lines_to_be_added_to_model_ini_file) as file:
+            for line in file.readlines():
+                lines.append(line)
+        return lines
+
+
+if __name__ == "__main__":
+    getProperties = GetProperties()
+    commands = getProperties.get_gitCloneCommands()
+    for command in commands:
+        print(command)
