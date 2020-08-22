@@ -16,7 +16,6 @@ class GetProperties(metaclass=GetPropertiesMeta):
         config = configparser.ConfigParser()
         return config.read('properties.ini')
 
-
     def get_git_clone_commands(self):
         print(os.getcwd())
         commands = []
@@ -34,7 +33,6 @@ class GetProperties(metaclass=GetPropertiesMeta):
             for line in file.readlines():
                 commands.append(line)
         return commands
-
 
     def get_supported_environment_source_dependencies(self):
         print(os.getcwd())

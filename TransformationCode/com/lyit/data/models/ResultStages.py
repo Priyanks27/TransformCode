@@ -4,12 +4,12 @@ class ResultStages:
     __instance = None
 
     results_stages = [
-        ""
-        "EnvironmentSetup"
         "FetchGit",
-        "Scanning",
+        "ScanningPom",
         "RuleMatching",
+        "TransformUnsupportedDependencies"
         "CopyFiles"
+        "CheckCloudProvider"
         "GitPush"
     ]
 

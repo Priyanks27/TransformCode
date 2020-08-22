@@ -17,3 +17,10 @@ class TransformationInput:
 
     def get_is_deploy(self):
         return self.__isDeploy
+
+    def __str__(self):
+        return "Transformation Input   : \n" \
+                + "source_github_url   : " + self.__source_github_url, "\n" \
+                + "target_github_url   : " + self.__target_github_url, "\n" \
+                + "targetcloudprovider : " + self.__targetcloudprovider, "\n" \
+                + "isDeploy            : " + self.__isDeploy + "\n"

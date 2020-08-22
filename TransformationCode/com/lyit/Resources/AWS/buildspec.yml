@@ -1,0 +1,26 @@
+version: 0.2
+
+proxy:
+  upload-artifacts: yes
+  logs: yes
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+    commands:
+      - echo install
+  pre_build:
+    commands:
+      - echo pre_build
+  build:
+    commands:
+      - mvn package
+      - echo build
+  post_build:
+    commands:
+      - echo post_build
+
+artifacts:
+  files:
+    - target/infinityAWS-0.0.1-SNAPSHOT.jar
