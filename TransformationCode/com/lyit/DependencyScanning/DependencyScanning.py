@@ -80,13 +80,14 @@ class DependencyScanning(metaclass=DependencyScanningMeta):
         value = {p: source_pom_dependency_dictionary[p]
                  for p in set(source_pom_dependency_dictionary) - set(required_dependency_dictionary)}
         json_object = json.dumps(value, indent=4)
-        baseFileName = "missing_required_dependencies_in_source_"
+        baseFileName = "missing_required_dependencies_in_target_"
         self.__generateReport(baseFileName, source_pom_location, value)
-        results_model.set_missing_required_dependencies_in_source(value)
+        results_model.set_missing_required_dependencies_in_target(value)
 
         if len(value.items()) > 0:
             results_model.set_dependencies_satisfied(False)
-        results_model.set_dependencies_satisfied(True)
+        else:
+            results_model.set_dependencies_satisfied(True)
         return results_model
 
     def __generateReport(self, basefileName, pom_location, value):
@@ -106,5 +107,6 @@ class DependencyScanning(metaclass=DependencyScanningMeta):
 #    source_pom_location = "C:/Users/priyank/Documents/PythonWorkspace/TransformationCode/com/lyit/Resources/StagingArea/01a095a2e0904d3eb02ac61084740482/pom.xml"
 #    target_pom_location = "C:/Users/priyank/Documents/PythonWorkspace/TransformationCode/com/lyit/Resources/TargetArea/0eecef0ee5a64339a3ce3d00c6e26a47/pom.xml"
 #    dependencyScanning = DependencyScanning()
-#    results_model = dependencyScanning.scan_dependencies(source_pom_location, target_pom_location)
+#    source = "C:\Users\priyank\Documents\Resources/pom.xml"
+#    results_model = dependencyScanning.scan_pom_file(source)
 #    print(results_model.get_dependencies_satisfied())

@@ -15,8 +15,8 @@ class DependencyScanResultsModel:
     def get_extra_dependencies_in_target_report(self):
         return self.__extra_dependencies_in_target_report
 
-    def get_missing_required_dependencies_in_source(self):
-        return self.__missing_required_dependencies_in_source
+    def get_missing_required_dependencies_in_target(self):
+        return self.__missing_required_dependencies_in_target
 
     def get_dependencies_satisfied(self):
         return self.__can_transform
@@ -33,8 +33,8 @@ class DependencyScanResultsModel:
     def set_extra_dependencies_in_target_report(self, _extra_dependencies_in_target_report):
         self.__extra_dependencies_in_target_report = _extra_dependencies_in_target_report
 
-    def set_missing_required_dependencies_in_source(self, _missing_required_dependencies_in_source):
-        self.__missing_required_dependencies_in_source = _missing_required_dependencies_in_source
+    def set_missing_required_dependencies_in_target(self, _missing_required_dependencies_in_target):
+        self.__missing_required_dependencies_in_target = _missing_required_dependencies_in_target
 
     def set_dependencies_satisfied(self, _can_transform):
         self.__can_transform = _can_transform

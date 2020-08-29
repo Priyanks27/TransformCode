@@ -1,7 +1,8 @@
 import os
-import time
+import json
 
 from com.lyit.DependencyScanning.DependencyScanning import DependencyScanning
+from com.lyit.DependencyScanning.UpdatePomInTarget import UpdatePomInTarget
 from com.lyit.Reporting.Reporting import Reporting
 from com.lyit.RuleEngine.RuleEngine import RuleEngine
 from com.lyit.RuleEngine.UpdateGoogleProject import UpdateGoogleProject
@@ -69,7 +70,10 @@ class TransformationService(metaclass=TransformationServiceMeta):
 
         # 4. Dependencies failed and the code cannot be transformed
         if not dependency_scan_results_model.get_dependencies_satisfied():
-            return dependency_scan_results_model
+            jsonObject = json.dumps(dependency_scan_results_model.get_missing_required_dependencies_in_target())
+            error = "Missing dependencies dependencies found during scaning: " + jsonObject
+            return reporting.add_to_report(error=error)
+            return jsonObject
 
         ruleEngine = RuleEngine()
         try:
